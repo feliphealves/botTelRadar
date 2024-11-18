@@ -1,10 +1,14 @@
-FROM maven:3.8.6-openjdk-17-slim
+FROM openjdk:17-slim
 
 WORKDIR /app
 
+# Instalar Maven manualmente
+RUN apt-get update && apt-get install -y maven
+
 COPY . /app
 
-RUN mvn clean package
+RUN chmod +x ./mvnw
+RUN ./mvnw clean package
 
 EXPOSE 8080
 
