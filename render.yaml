@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: bot-tel-radar
+    env: docker
+    buildCommand: docker build -t bot-tel-radar .
+    startCommand: docker run -p 8080:8080 bot-tel-radar
+    envVars:
+      - key: JAVA_HOME
+        value: /usr/local/openjdk-17
